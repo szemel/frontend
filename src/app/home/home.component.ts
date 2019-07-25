@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ArticlePreviewComponent } from '../shared/article-preview/article-preview.component';
 
 
 @Component({
