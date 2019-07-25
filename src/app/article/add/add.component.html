@@ -1,3 +1,42 @@
-<p>
-  add works!
-</p>
+<div class="auth-page">
+  <div class="container page">
+    <div class="row">
+
+      <div class="col-md-6 offset-md-3 col-xs-12">
+        <h1 class="text-xs-center">Logowanie</h1>
+        <form [formGroup]="articleForm" (ngSubmit)="submitForm()">
+          <fieldset>
+            <fieldset class="form-group">
+              <input
+                formControlName="header"
+                placeholder="Email"
+                class="form-control form-control-lg"
+                type="text" />
+            </fieldset>
+
+            <fieldset class="form-group">
+              <input
+                formControlName="contentPol"
+                placeholder="Treść(Polski)"
+                class="form-control form-control-lg"
+                type="text" />
+            </fieldset>
+
+            <fieldset class="form-group">
+              <input
+                formControlName="image"
+                placeholder="Obraz"
+                class="form-control form-control-lg"
+                type="file" />
+            </fieldset>
+
+            <button class="btn btn-lg btn-primary pull-xs-right" [disabled]="!authForm.valid" type="submit">
+              ZAPISZ
+            </button>
+          </fieldset>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>

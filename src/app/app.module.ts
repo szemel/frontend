@@ -10,14 +10,12 @@ import {AuthModule} from './auth/auth.module';
 import {HttpClientModule} from '@angular/common/http';
 import { ArticleComponent } from './article/article/article.component';
 import { AddComponent } from './article/add/add.component';
-import { AddComponentComponent } from './add-component/add-component.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ArticleComponent,
     AddComponent,
-    AddComponentComponent
   ],
   imports: [
     HttpClientModule,
