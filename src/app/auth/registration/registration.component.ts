@@ -39,6 +39,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   submitForm() {
+    debugger
     this.isSubmitting = true;
     const credentials = this.registrationForm.value;
     this.authService.attemptAuth(credentials).subscribe((a) => {
