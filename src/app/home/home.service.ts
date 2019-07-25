@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 
 import { ApiService, JwtService } from '../core/services';
-import {map} from "rxjs/operators";
 
 
 @Injectable()
