@@ -1,4 +1,5 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import {Component, Output, EventEmitter} from '@angular/core';
+
 
 @Component({
   selector: 'app-header',
@@ -7,10 +8,22 @@ import { Component, Output, EventEmitter } from '@angular/core';
 })
 export class HeaderComponent {
 
-  @Output() showMenu = new EventEmitter<boolean>();
-  constructor() { }
+  @Output() showMenu = new EventEmitter();
+  public items: Array<any>;
+  public flag: boolean;
+
+  constructor() {
+    this.flag = false;
+    this.items = [
+      {link: '/add_article', name: 'dodaj artykuł'},
+      {link: '/profile', name: 'mój profil'},
+      {link: '/logout', name: 'wyloguj'}
+    ];
+  }
 
   toggleMenu() {
-    this.showMenu.emit(true);
+    this.flag = !this.flag;
+    this.showMenu.emit(this.flag);
   }
+
 }
