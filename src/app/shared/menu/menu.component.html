@@ -1,3 +1,7 @@
-<p>
-  menu works!
-</p>
+<div class="overlay">
+  <ul class="navbar-nav mr-auto" >
+    <li class="nav-item" *ngFor="let a of items">
+      <a class="nav-link" href="{{ a.link }}">{{ a.name | uppercase }}</a>
+    </li>
+  </ul>
+</div>

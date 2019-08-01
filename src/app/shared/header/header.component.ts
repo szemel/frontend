@@ -9,16 +9,11 @@ import {Component, Output, EventEmitter} from '@angular/core';
 export class HeaderComponent {
 
   @Output() showMenu = new EventEmitter();
-  public items: Array<any>;
+
   public flag: boolean;
 
   constructor() {
-    this.flag = false;
-    this.items = [
-      {link: '/add_article', name: 'dodaj artykuł'},
-      {link: '/profile', name: 'mój profil'},
-      {link: '/logout', name: 'wyloguj'}
-    ];
+    this.flag = true;
   }
 
   toggleMenu() {

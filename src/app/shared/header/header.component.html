@@ -3,18 +3,11 @@
     <button class="navbar-toggler" type="button" aria-controls="navbar-menu" aria-label="Toggle navigation"
             (click)="toggleMenu()">
       <span class="navbar-toggler-icon"></span>
-
     </button>
-    <div class="collapse navbar-collapse" [ngClass]="{'show': flag }">
-
-      <ul class="navbar-nav mr-auto" *ngFor="let a of items">
-        <li class="nav-item">
-          <a class="nav-link" href="{{ a.link }}">{{ a.name }}</a>
-        </li>
-
-      </ul>
-    </div>
-
   </nav>
-
 </header>
+<div class="" [ngClass]="{'d-none': flag }">
+  <app-menu></app-menu>
+</div>
+
+
