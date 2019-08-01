@@ -35,11 +35,10 @@ export class LoginComponent implements OnInit {
   }
 
   submitForm() {
-    debugger
     this.isSubmitting = true;
     const credentials = this.authForm.value;
     this.authService.attemptAuth(credentials).subscribe((a) => {
       this.router.navigate([this.redirectTo]);
-    },(a)=>{debugger});
+    },(a)=>{});
   }
 }
