@@ -1,42 +1,28 @@
-<div class="auth-page">
-  <div class="container page">
-    <div class="row">
+<div class="container col-sm-5">
+  <form [formGroup]="addArticleForm" (ngSubmit)="submitForm()">
+    <h4 class="display-4 row"><u>Dodaj nowy artukul</u></h4>
 
-      <div class="col-md-6 offset-md-3 col-xs-12">
-        <h1 class="text-xs-center">Logowanie</h1>
-        <form [formGroup]="articleForm" (ngSubmit)="submitForm()">
-          <fieldset>
-            <fieldset class="form-group">
-              <input
-                formControlName="header"
-                placeholder="Email"
-                class="form-control form-control-lg"
-                type="text" />
-            </fieldset>
-
-            <fieldset class="form-group">
-              <input
-                formControlName="contentPol"
-                placeholder="Treść(Polski)"
-                class="form-control form-control-lg"
-                type="text" />
-            </fieldset>
-
-            <fieldset class="form-group">
-              <input
-                formControlName="image"
-                placeholder="Obraz"
-                class="form-control form-control-lg"
-                type="file" />
-            </fieldset>
-
-            <button class="btn btn-lg btn-primary pull-xs-right" [disabled]="!authForm.valid" type="submit">
-              ZAPISZ
-            </button>
-          </fieldset>
-        </form>
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">Nagłówek:</label>
+      <div class="col-sm-9">
+        <input class="form-control" formControlName="title" type="text" required/>
       </div>
-
     </div>
-  </div>
+
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">Treść(Polski):</label>
+      <div class="col-sm-9">
+        <textarea class="form-control noresize" formControlName="body" required></textarea>
+      </div>
+    </div>
+
+
+    <div class="form-group row">
+      <div class="col-sm-3 col-form-label">Obraz:</div>
+        <input class="col-sm-3" formControlName="image" type="file" value="Wczytaj plik"/>
+    </div>
+
+
+    <input type="submit" value="Zapisz"/>
+  </form>
 </div>
