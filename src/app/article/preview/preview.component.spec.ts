@@ -1,8 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ArticlePreviewComponent } from './article-preview.component';
+import { ArticlePreviewComponent } from './preview.component';
 
-describe('PreviewComponent', () => {
+describe('ArticlePreviewComponent', () => {
   let component: ArticlePreviewComponent;
   let fixture: ComponentFixture<ArticlePreviewComponent>;
 
