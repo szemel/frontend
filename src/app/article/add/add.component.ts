@@ -27,6 +27,6 @@ export class AddComponent implements OnInit {
 
   submitForm() {
     const article = this.addArticleForm.value;
-    this.apiService.post('articles/', {article}).subscribe();
+    this.apiService.post('articles/', article).subscribe();
   }
 }
