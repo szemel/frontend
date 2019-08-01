@@ -29,11 +29,16 @@ export class ApiService {
     ).pipe(catchError(this.formatErrors));
   }
 
-  post(path: string, body: Object = {}, headers ?: HttpHeaders): Observable<any> {
+  post(path: string, body: Object = {}): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'JWT' + this.jwtService.getToken()
+    });
+
     return this.http.post(
       `${environment.api_url}${path}`,
       JSON.stringify(body),
-      {headers}
+      {headers},
     ).pipe(catchError(this.formatErrors));
   }
 

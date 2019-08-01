@@ -27,8 +27,6 @@ export class AddComponent implements OnInit {
 
   submitForm() {
     const article = this.addArticleForm.value;
-    console.log(this.jwtService.getToken().toString());
-    const headers = new HttpHeaders({Authorization: this.jwtService.getToken().toString()});
-    this.apiService.post('articles/', {article}, headers).subscribe();
+    this.apiService.post('articles/', {article}).subscribe();
   }
 }
