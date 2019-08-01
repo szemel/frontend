@@ -1,6 +1,6 @@
 Artykul
-<div style="background-image: {{ article.image }}">
-  <h1>title: {{ article.title }}</h1>
-  <p>body: {{ article.body }}</p>
-  <button *ngIf="article.button">Przejdź do artykułu</button>
+<div style="background-image: url({{ image }})">
+  <h1>title: {{ (title.length > 20) ? (title | slice:0:20) + '...' : (title) }}</h1>
+  <p>body: {{ (body.length > 300) ? (body | slice:0:300) + '...' : (body) }}</p>
+<!--  <button *ngIf="button">Przejdź do artykułu</button>-->
 </div>

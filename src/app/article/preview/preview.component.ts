@@ -6,7 +6,9 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./preview.component.sass']
 })
 export class ArticlePreviewComponent implements OnInit {
-  @Input() article: [];
+  @Input() image: string;
+  @Input() title: string;
+  @Input() body: string;
   constructor() { }
 
   ngOnInit() { }
