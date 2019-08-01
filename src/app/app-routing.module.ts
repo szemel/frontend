@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import {HomeComponent} from './home/home.component';
-
+import {AddComponent} from './article/add/add.component';
 const routes: Routes = [
+  {path: 'article/add', component: AddComponent}
 ];
 
 @NgModule({
