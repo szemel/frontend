@@ -1,6 +1,7 @@
-<div class="container col-sm-5">
-  <form [formGroup]="addArticleForm" (ngSubmit)="submitForm()">
-  <h4 class="display-4 col-sm-12"><u>Dodaj nowy artukul</u></h4>
+<div class="container col-sm-8 border border-secondary rounded ">
+  <div class="col-sm-8">
+    <h4 class="display-4 col-sm-11 border-bottom border-secondary">Dodaj nowy artukul</h4>
+    <form [formGroup]="addArticleForm" (ngSubmit)="submitForm()">
 
     <div class="form-group col-sm row">
       <div class="col-sm-3">Nagłówek:</div>
@@ -25,4 +26,5 @@
 
     <div class="col-sm"><input type="submit" class="btn btn-secondary" value="Zapisz"/></div>
   </form>
+  </div>
 </div>
