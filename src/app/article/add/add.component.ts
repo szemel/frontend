@@ -1,8 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ApiService, JwtService} from '../../core/services';
-import {HttpHeaders} from '@angular/common/http';
-import {Article} from '../article'
+import {ApiService} from '../../core/services';
+import { HttpHeaders, HttpClient} from '@angular/common/http';
+import {environment} from '../../../environments/environment';
+import { JwtService } from '../../core/services';
+import {catchError} from 'rxjs/operators';
+import {throwError} from 'rxjs';
+
+
 @Component({
   selector: 'app-add-article-form',
   templateUrl: './add.component.html',
@@ -10,31 +15,39 @@ import {Article} from '../article'
 })
 export class AddComponent implements OnInit {
   addArticleForm: FormGroup;
-  article: Article = new Article();
-
+  file: File;
   constructor(
     private fb: FormBuilder,
     private apiService: ApiService,
+    private http: HttpClient,
     private jwtService: JwtService
-  ) {
+  ) {}
+
+  ngOnInit() {
     this.addArticleForm = this.fb.group({
       title: ['', Validators.required],
-      body: ['', Validators.required],
-      image: ['', Validators.required]
+      body: ['', Validators.required]
     });
   }
 
-  ngOnInit() {
-  }
   handleUpload(e) {
-    const file = e.target.files[0];
-    const fileReader = new FileReader();
-    console.log(this.article);
-    this.article.image = file;
-    console.log(this.article.image);
+    this.file = e.target.files[0];
   }
+
   submitForm() {
-    this.article = this.addArticleForm.value;
-    this.apiService.post('articles/', this.article).subscribe();
+    const article = this.addArticleForm.value;
+    console.log(article);
+    const formData: FormData = new FormData();
+    formData.append('title', article.title);
+    formData.append('body', article.body);
+    formData.append('image', this.file, this.file.name);
+    const headers = new HttpHeaders({
+      'Authorization': 'JWT' + this.jwtService.getToken()
+    });
+    this.http.post(`${environment.api_url}articles/`,
+      formData,
+      {headers}
+    ).pipe(catchError((err) => throwError(err.error))).subscribe();
+
   }
 }
