@@ -39,6 +39,6 @@ export class LoginComponent implements OnInit {
     const credentials = this.authForm.value;
     this.authService.attemptAuth(credentials).subscribe((a) => {
       this.router.navigate([this.redirectTo]);
-    },(a)=>{});
+    },(a)=>{debugger});
   }
 }

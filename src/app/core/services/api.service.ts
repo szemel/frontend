@@ -14,6 +14,7 @@ export class ApiService {
   ) {}
 
   private formatErrors(error: any) {
+    debugger
     return  throwError(error.error);
   }
 
@@ -30,6 +31,7 @@ export class ApiService {
   }
 
   post(path: string, body: Object = {}): Observable<any> {
+    debugger
     return this.http.post(
       `${environment.api_url}${path}`,
       JSON.stringify(body)

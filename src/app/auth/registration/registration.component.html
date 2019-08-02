@@ -1,3 +1,48 @@
-<p>
-  registration works!
-</p>
+<div class="auth-page">
+  <div class="container page">
+    <div class="row">
+
+      <div class="col-md-6 offset-md-3 col-xs-12">
+        <h1 class="text-xs-center">Rejestracja</h1>
+        <form [formGroup]="registrationForm" (ngSubmit)="submitForm()">
+          <fieldset [disabled]="isSubmitting">
+            <fieldset class="form-group">
+              <input
+                formControlName="username"
+                placeholder="Nazwa użytkownika"
+                class="form-control form-control-lg"
+                type="text"/>
+            </fieldset>
+            <fieldset class="form-group">
+              <input
+                formControlName="email"
+                placeholder="Email"
+                class="form-control form-control-lg"
+                type="text"/>
+            </fieldset>
+            <fieldset class="form-group">
+              <input
+                formControlName="password"
+                placeholder="Hasło"
+                class="form-control form-control-lg"
+                type="password"/>
+            </fieldset>
+            <fieldset class="form-group">
+              <input
+                formControlName="confirmpassword"
+                placeholder="Powtórz hasło"
+                class="form-control form-control-lg"
+                type="password"/>
+            </fieldset>
+
+
+            <button class="btn btn-lg btn-success pull-xs-right" [disabled]="!registrationForm.valid" type="submit">
+              ZAREJESTRUJ SIĘ
+            </button>
+          </fieldset>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable ,  BehaviorSubject ,  ReplaySubject } from 'rxjs';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable, BehaviorSubject, ReplaySubject} from 'rxjs';
 
-import { map ,  distinctUntilChanged } from 'rxjs/operators';
+import {map, distinctUntilChanged} from 'rxjs/operators';
 import {User} from '../core/models';
 import {ApiService, JwtService, UserService} from '../core/services';
 
@@ -17,7 +17,8 @@ export class AuthService {
     private apiService: ApiService,
     private userService: UserService,
     private jwtService: JwtService
-  ) {}
+  ) {
+  }
 
   // Verify JWT in localstorage with server & load user's info.
   // This runs once on application startup.
@@ -25,10 +26,10 @@ export class AuthService {
     // If JWT detected, attempt to get & store user's info
     if (this.jwtService.getToken()) {
       this.apiService.get('/user')
-      .subscribe(
-        data => this.setAuth(data.user),
-        err => this.purgeAuth()
-      );
+        .subscribe(
+          data => this.setAuth(data.user),
+          err => this.purgeAuth()
+        );
     } else {
       // Remove any potential remnants of previous auth states
       this.purgeAuth();
@@ -51,17 +52,45 @@ export class AuthService {
     this.userService.logoutUser();
     // Set auth status to false
     this.isAuthenticatedSubject.next(false);
+    //
   }
 
   attemptAuth(credentials): Observable<User> {
     return this.apiService.post('/users/login/', {user: credentials})
       .pipe(map(
-      data => {
-        this.setAuth(data.user);
-        //redirect to home or to setRedirectUrl
-        return data;
-      }
-    ));
+        data => {
+          this.setAuth(data.user);
+          // redirect to home or to setRedirectUrl
+          return data;
+        }
+      ));
   }
+
+  attemptRegistration(credentials): Observable<User> {
+    return this.apiService.post('/users/', {
+      user: credentials,
+      'username': credentials.username,
+      'email': credentials.email,
+      'password': credentials.password,
+    })
+      .pipe(map(
+        data => {
+          this.setAuth(data.user);
+          // redirect to home or to setRedirectUrl
+          return data;
+        }
+      ));
+  }
+
+
+  extractData(res: Response) {
+    let body = res.json();
+    return body || {};
+  }
+
+  handleErrorObservable(error: Response | any) {
+    return Observable.throw(error.message || error);
+  }
+
 
 }
