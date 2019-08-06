@@ -11,6 +11,7 @@ export class ArticleService {
   ) {}
 
   getArticle(id: number) {
-    return this.apiService.get('articles/' + id).subscribe();
+    this.apiService.get('articles/' + id).subscribe(x => console.log(x));
+    return null;
   }
 }

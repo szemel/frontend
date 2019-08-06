@@ -2,8 +2,10 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import {HomeComponent} from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import {ArticleComponent} from './article/article/article.component';
 
 const routes: Routes = [
+  {path: 'article/:id', component: ArticleComponent},
   {path: '404', component: NotFoundComponent},
   {path: '**', redirectTo: '/404'},
 ];
