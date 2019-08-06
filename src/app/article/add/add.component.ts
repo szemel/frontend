@@ -44,7 +44,8 @@ export class AddComponent implements OnInit {
     formData.append('body', article.body);
     formData.append('image', this.file, this.file.name);
 
-
+    this.http.post(`${environment.api_url}/articles/`,
+    formData).pipe(catchError((err => throwError(err)))).subscribe();
 
   }
 }

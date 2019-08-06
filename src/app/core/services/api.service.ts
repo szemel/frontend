@@ -32,7 +32,6 @@ export class ApiService {
   post(path: string, body: Object = {}): Observable<any> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': 'JWT' + this.jwtService.getToken()
     });
 
     return this.http.post(
