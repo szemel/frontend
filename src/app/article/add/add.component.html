@@ -1,30 +1,51 @@
 <div class="container col-sm-8 border border-secondary rounded ">
   <div class="col-sm-8">
-    <h4 class="display-4 col-sm-11 border-bottom border-secondary">Dodaj nowy artukul</h4>
+    <h4 class="display-4 border-bottom border-secondary">Dodaj nowy artukuł</h4>
     <form [formGroup]="addArticleForm" (ngSubmit)="submitForm()">
 
-    <div class="form-group col-sm row">
-      <div class="col-sm-3">Nagłówek:</div>
-      <div class="col-sm-9">
-        <input class="form-control" formControlName="title" type="text" required/>
+
+      <div class="form-group row">
+        <div *ngIf="title.errors && (title.dirty || title.touched)"
+             class="alert alert-danger col-12">
+          Uzupełnij tytuł!
+        </div>
+        <div class="w-100"></div>
+        <div class="col-sm-3 ">Nagłówek:</div>
+        <div class="col-sm-9">
+          <input name="title" class="form-control" formControlName="title" type="text" required/>
+        </div>
       </div>
-    </div>
 
-    <div class="form-group col-sm row">
-      <div class="col-sm-3">Treść(Polski):</div>
-      <div class="col-sm-9">
-        <textarea class="form-control noresize" formControlName="body" required></textarea>
+
+      <div class="form-group row">
+        <div *ngIf="body.errors && (body.dirty || body.touched)"
+             class="alert alert-danger col-12">
+          Uzupełnij treść!
+        </div>
+        <div class="col-sm-3">Treść(Polski):</div>
+        <div class="col-sm-9">
+          <textarea class="form-control noresize" formControlName="body" required></textarea>
+        </div>
       </div>
-    </div>
 
 
-    <div class="form-group col-sm row">
-      <div class="col-sm-3">Obraz:</div>
-        <input type="file" class="col-sm-9" (change)="handleUpload($event)"  value="Wczytaj plik" required/>
-    </div>
+
+      <div class="form-group row">
+        <div *ngIf="!fileInput.files[0]"
+             class="alert alert-danger col-12">
+          Uzupełnij zdjęcie!
+        </div>
+        <div class="col-sm-3">Obraz:</div>
+        <button class="btn btn-secondary" style="position: relative; right: 0;" type="button" (click)="fileInput.click()">
+          <span>Upload</span>
+          <input #fileInput id="imageInput" type="file" accept="image/*" style="display: none" (change)="handleUpload($event)"
+               value="Wczytaj plik" required/>
+        </button>
+
+      </div>
 
 
-    <div class="col-sm"><input type="submit" class="btn btn-secondary" value="Zapisz"/></div>
-  </form>
+      <div class="col-sm"><input type="submit" class="btn btn-secondary" value="Zapisz"/></div>
+    </form>
   </div>
 </div>
