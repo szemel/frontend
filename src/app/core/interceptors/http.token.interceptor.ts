@@ -10,12 +10,13 @@ export class HttpTokenInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const headersConfig = {
+      'Accept': 'application/json'
     };
 
     const token = this.jwtService.getToken();
 
     if (token) {
-      headersConfig['Authorization'] = `Token ${token}`;
+      headersConfig['Authorization'] = 'Token ' + token;
     }
 
     const request = req.clone({ setHeaders: headersConfig });

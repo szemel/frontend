@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ApiService} from '../../core/services';
-import { HttpHeaders, HttpClient} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
-import { JwtService } from '../../core/services';
 import {catchError} from 'rxjs/operators';
 import {throwError} from 'rxjs';
 
@@ -16,11 +15,11 @@ import {throwError} from 'rxjs';
 export class AddComponent implements OnInit {
   addArticleForm: FormGroup;
   file: File;
+
   constructor(
     private fb: FormBuilder,
     private apiService: ApiService,
     private http: HttpClient,
-    private jwtService: JwtService
   ) {}
 
   ngOnInit() {
@@ -34,20 +33,18 @@ export class AddComponent implements OnInit {
     this.file = e.target.files[0];
   }
 
+  checkForm() {}
+
   submitForm() {
     const article = this.addArticleForm.value;
     console.log(article);
+    this.checkForm();
     const formData: FormData = new FormData();
     formData.append('title', article.title);
     formData.append('body', article.body);
     formData.append('image', this.file, this.file.name);
-    const headers = new HttpHeaders({
-      'Authorization': 'JWT' + this.jwtService.getToken()
-    });
-    this.http.post(`${environment.api_url}articles/`,
-      formData,
-      {headers}
-    ).pipe(catchError((err) => throwError(err.error))).subscribe();
+
+
 
   }
 }
