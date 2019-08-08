@@ -1,7 +1,6 @@
 <div class="auth-page">
   <div class="container page">
     <div class="row">
-
       <div class="col-md-6 offset-md-3 col-xs-12">
         <h1 class="text-xs-center">Rejestracja</h1>
         <form [formGroup]="registrationForm" (ngSubmit)="submitForm()">
@@ -11,38 +10,55 @@
                 formControlName="username"
                 placeholder="Nazwa użytkownika"
                 class="form-control form-control-lg"
+                [ngClass]="{ 'is-invalid': submitted && f.username.errors }"
                 type="text"/>
+              <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                <div *ngIf="f.username.errors.required">Nazwa użytkownika wymagana</div>
+              </div>
             </fieldset>
             <fieldset class="form-group">
+              <label>Email</label>
               <input
                 formControlName="email"
                 placeholder="Email"
                 class="form-control form-control-lg"
+                [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
                 type="text"/>
+              <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">Email jest wymagany</div>
+                <div *ngIf="f.email.errors.email">Email musi mieć prawidłowy format</div>
+              </div>
             </fieldset>
             <fieldset class="form-group">
               <input
                 formControlName="password"
                 placeholder="Hasło"
                 class="form-control form-control-lg"
+                [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
                 type="password"/>
+              <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                <div *ngIf="f.password.errors.required">Hasło jest wymagane</div>
+                <div *ngIf="f.password.errors.minlength">Hasło musi mieć conajmniej 6 znaków</div>
+              </div>
             </fieldset>
             <fieldset class="form-group">
               <input
                 formControlName="confirmpassword"
                 placeholder="Powtórz hasło"
-                class="form-control form-control-lg"
+                class="form-cont
+                rol form-control-lg" [ngClass]="{ 'is-invalid': submitted && f.confirmpassword.errors }"
                 type="password"/>
+              <div *ngIf="submitted && f.confirmpassword.errors" class="invalid-feedback">
+                <div *ngIf="f.confirmpassword.errors.required">Hasło jest wymagane</div>
+                <div *ngIf="f.confirmpassword.errors.minlength">Hasło musi mieć conajmniej 6 znaków</div>
+              </div>
             </fieldset>
-
-
             <button class="btn btn-lg btn-success pull-xs-right" [disabled]="!registrationForm.valid" type="submit">
               ZAREJESTRUJ SIĘ
             </button>
           </fieldset>
         </form>
       </div>
-
     </div>
   </div>
 </div>
