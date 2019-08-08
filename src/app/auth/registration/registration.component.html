@@ -8,12 +8,10 @@
             <fieldset class="form-group">
               <input
                 formControlName="username"
-                placeholder="Nazwa użytkownika"
-                class="form-control form-control-lg"
-                [ngClass]="{ 'is-invalid': submitted && f.username.errors }"
+                class="form-control form-control-lg" [ngClass]="{ 'is-invalid': submitted && registrationForm.controls.username.errors }"
                 type="text"/>
-              <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-                <div *ngIf="f.username.errors.required">Nazwa użytkownika wymagana</div>
+              <div *ngIf="submitted && registrationForm.controls.username.errors" class="invalid-feedback">
+                <div *ngIf="registrationForm.controls.username.errors.required">Nazwa użytkownika wymagana</div>
               </div>
             </fieldset>
             <fieldset class="form-group">
@@ -21,12 +19,11 @@
               <input
                 formControlName="email"
                 placeholder="Email"
-                class="form-control form-control-lg"
-                [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+                class="form-control form-control-lg" [ngClass]="{ 'is-invalid': submitted && registrationForm.controls.email.errors }"
                 type="text"/>
-              <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                <div *ngIf="f.email.errors.required">Email jest wymagany</div>
-                <div *ngIf="f.email.errors.email">Email musi mieć prawidłowy format</div>
+              <div *ngIf="submitted && registrationForm.controls.email.errors" class="invalid-feedback">
+                <div *ngIf="registrationForm.controls.email.errors.required">Email jest wymagany</div>
+                <div *ngIf="registrationForm.controls.email.errors.email">Email musi mieć prawidłowy format</div>
               </div>
             </fieldset>
             <fieldset class="form-group">
@@ -34,11 +31,11 @@
                 formControlName="password"
                 placeholder="Hasło"
                 class="form-control form-control-lg"
-                [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+                [ngClass]="{ 'is-invalid': submitted && registrationForm.controls.password.errors }"
                 type="password"/>
-              <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                <div *ngIf="f.password.errors.required">Hasło jest wymagane</div>
-                <div *ngIf="f.password.errors.minlength">Hasło musi mieć conajmniej 6 znaków</div>
+              <div *ngIf="submitted && registrationForm.controls.password.errors" class="invalid-feedback">
+                <div *ngIf="registrationForm.controls.password.errors.required">Hasło jest wymagane</div>
+                <div *ngIf="registrationForm.controls.password.errors.minlength">Hasło musi mieć conajmniej 6 znaków</div>
               </div>
             </fieldset>
             <fieldset class="form-group">
@@ -46,11 +43,11 @@
                 formControlName="confirmpassword"
                 placeholder="Powtórz hasło"
                 class="form-cont
-                rol form-control-lg" [ngClass]="{ 'is-invalid': submitted && f.confirmpassword.errors }"
+                rol form-control-lg" [ngClass]="{ 'is-invalid': submitted && registrationForm.controls.confirmpassword.errors }"
                 type="password"/>
-              <div *ngIf="submitted && f.confirmpassword.errors" class="invalid-feedback">
-                <div *ngIf="f.confirmpassword.errors.required">Hasło jest wymagane</div>
-                <div *ngIf="f.confirmpassword.errors.minlength">Hasło musi mieć conajmniej 6 znaków</div>
+              <div *ngIf="submitted && registrationForm.controls.confirmpassword.errors" class="invalid-feedback">
+                <div *ngIf="registrationForm.controls.confirmpassword.errors.required">Hasło jest wymagane</div>
+                <div *ngIf="registrationForm.controls.confirmpassword.errors.minlength">Hasło musi mieć conajmniej 6 znaków</div>
               </div>
             </fieldset>
             <button class="btn btn-lg btn-success pull-xs-right" [disabled]="!registrationForm.valid" type="submit">
