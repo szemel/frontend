@@ -7,7 +7,7 @@
   </nav>
 </header>
 <div class="" [ngClass]="{'d-none': flag }">
-  <app-menu></app-menu>
+  <app-menu (closeMenu)="toggleMenu()"></app-menu>
 </div>
 
 

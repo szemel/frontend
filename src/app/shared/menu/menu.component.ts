@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-menu',
@@ -6,6 +6,8 @@ import {Component, OnInit, Input} from '@angular/core';
   styleUrls: ['./menu.component.sass']
 })
 export class MenuComponent implements OnInit {
+  @Output() closeMenu = new EventEmitter();
+
   public items: Array<any>;
 
   constructor() {
@@ -19,4 +21,7 @@ export class MenuComponent implements OnInit {
   ngOnInit() {
   }
 
+  sendCloseMenu() {
+    this.closeMenu.emit();
+  }
 }
