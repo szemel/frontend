@@ -1,0 +1,20 @@
+<h2>Komentarze</h2>
+
+<div class="row comment-item" *ngFor="let comment of comments">
+  <div class="col-sm-1">
+    <div class="thumbnail">
+      <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+    </div><!-- /thumbnail -->
+  </div><!-- /col-sm-1 -->
+
+  <div class="col-sm-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <strong>{{ comment.author }}</strong> <span class="text-muted">commented 5 days ago</span>
+      </div>
+      <div class="panel-body">
+        {{ comment.body }}
+      </div><!-- /panel-body -->
+    </div><!-- /panel panel-default -->
+  </div><!-- /col-sm-5 -->
+</div>

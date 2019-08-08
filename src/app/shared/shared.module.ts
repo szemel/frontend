@@ -6,21 +6,28 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { MenuComponent } from './menu/menu.component';
 import { ArticlePreviewComponent } from './article-preview/article-preview.component';
+import { CommentComponent } from './comment/comment-list/comment-list.component';
 
 @NgModule({
-  declarations: [HeaderComponent, MenuComponent, ArticlePreviewComponent],
+  declarations: [
+    HeaderComponent,
+    MenuComponent,
+    ArticlePreviewComponent,
+    CommentComponent
+  ],
   exports: [
     HeaderComponent,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    CommentComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
   ]
 })
 export class SharedModule { }
