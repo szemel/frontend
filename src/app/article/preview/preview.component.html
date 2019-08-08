@@ -1,6 +1,8 @@
-Artykul
-<div style="background-image: url({{ image }})">
-  <h1>title: {{ (title.length > 20) ? (title | slice:0:20) + '...' : (title) }}</h1>
-  <p>body: {{ (body.length > 300) ? (body | slice:0:300) + '...' : (body) }}</p>
-<!--  <button *ngIf="button">Przejdź do artykułu</button>-->
+<div class="card bg-dark text-white">
+  <img src="{{image}}" class="card-img" alt="article-background-image">
+  <div class="card-img-overlay">
+    <h5 class="card-title">{{ (title.length > 30) ? (title | slice:0:30) + '...' : (title) }}</h5>
+    <p class="card-text">{{ (body.length > 300) ? (body | slice:0:300) + '...' : (body) }}</p>
+    <a href="{{articleURL}}" class="btn btn-outline-light">Przejdź do artykułu</a>
+  </div>
 </div>

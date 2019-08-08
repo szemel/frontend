@@ -9,6 +9,7 @@ export class ArticlePreviewComponent implements OnInit {
   @Input() image: string;
   @Input() title: string;
   @Input() body: string;
+  @Input() articleURL: string;
   constructor() { }
 
   ngOnInit() { }
