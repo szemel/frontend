@@ -1,8 +1,7 @@
-<div class="card bg-dark text-white">
-  <img src="{{image}}" class="card-img" alt="article-background-image">
-  <div class="card-img-overlay">
-    <h5 class="card-title">{{ (title.length > 30) ? (title | slice:0:30) + '...' : (title) }}</h5>
-    <p class="card-text">{{ (body.length > 300) ? (body | slice:0:300) + '...' : (body) }}</p>
-    <a href="{{articleURL}}" class="btn btn-outline-light">Przejdź do artykułu</a>
-  </div>
+<div class="container py-5 px-5" [ngStyle]="{'height': '50vh', 'width': '50vw', 'background': 'url(' + article.image + ') no-repeat', 'background-size': '50vw'}">
+    <div class="text-light">
+      <h5>{{ (article.title.length > 30) ? (article.title | slice:0:30) + '...' : (article.title) }}</h5>
+      <p>{{ (article.body.length > 300) ? (article.body | slice:0:300) + '...' : (article.body) }}</p>
+      <a href="{{article.url}}" class="btn btn-outline-light">Przejdź do artykułu</a>
+    </div>
 </div>
