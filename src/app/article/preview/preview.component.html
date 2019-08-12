@@ -1,7 +1,7 @@
-<div class="container py-5 px-5" [ngStyle]="{'height': '900px', 'width': '100%', 'background': 'url(' + article.image + ') no-repeat', 'background-size': '100%'}">
-    <div class="text-light container py-5 px-5">
-      <h5>{{ (article.title.length > 30) ? (article.title | slice:0:30) + '...' : (article.title) }}</h5>
-      <p>{{ (article.body.length > 300) ? (article.body | slice:0:300) + '...' : (article.body) }}</p>
+<div class="container py-3 to-center" [ngStyle]="{'height': '600px', 'width': '100%', 'background': 'url(' + article.image + ') no-repeat', 'background-size': '100%'}">
+    <div class="text-light container center px-1 col-lg-12 col-md-12 col-xs-12 col-sm-12">
+      <h5>{{ (article.title.length > 30) ? (article.title | slice:0:25) + '...' : (article.title) }}</h5>
+      <p>{{ (article.body.length > 300) ? (article.body | slice:0:125) + '...' : (article.body) }}</p>
       <a href="{{article.url}}" class="btn btn-outline-light">Przejdź do artykułu</a>
     </div>
 </div>
