@@ -1,5 +1,5 @@
-<div class="container py-5 px-5" [ngStyle]="{'height': '50vh', 'width': '50vw', 'background': 'url(' + article.image + ') no-repeat', 'background-size': '50vw'}">
-    <div class="text-light">
+<div class="container py-5 px-5" [ngStyle]="{'height': '900px', 'width': '100%', 'background': 'url(' + article.image + ') no-repeat', 'background-size': '100%'}">
+    <div class="text-light container py-5 px-5">
       <h5>{{ (article.title.length > 30) ? (article.title | slice:0:30) + '...' : (article.title) }}</h5>
       <p>{{ (article.body.length > 300) ? (article.body | slice:0:300) + '...' : (article.body) }}</p>
       <a href="{{article.url}}" class="btn btn-outline-light">Przejdź do artykułu</a>
